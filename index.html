@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>15% OFF Express Lane Service | Blaise Alexander CDJR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding-top: 48px;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #f5f6f8, #e0e3e6);
+      color: #333;
+      text-align: center;
+      min-height: 100vh;
+    }
+    #timer-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      background: #1d3557;
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease;
+      font-size: 1rem;
+    }
+    #countdown {
+      margin-left: 8px;
+      font-family: monospace;
+      animation: pulse 1s infinite alternate;
+    }
+    main {
+      max-width: 640px;
+      margin: 5rem auto 6rem;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+      animation: fadeInUp 0.6s ease;
+    }
+    header.hero {
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      padding: 3.5rem 2rem 3rem;
+      color: white;
+    }
+    header.hero h1 {
+      margin: 0 0 1rem;
+      font-size: 2.3rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      animation: bounceIn 1.2s ease;
+    }
+    header.hero p {
+      margin: 0;
+      font-weight: 400;
+      font-size: 1.15rem;
+      opacity: 0.95;
+    }
+    section {
+      padding: 2.5rem 1.5rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #1d3557;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+    }
+    form input {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      margin: 0.5rem auto;
+      padding: 0.85rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: 0.3s ease;
+      background: #fefefe;
+    }
+    form input:focus {
+      border-color: #457b9d;
+      box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.15);
+    }
+    .cta-button {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      margin: 1rem auto 0;
+      background: #e9c46a;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1d3557;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .cta-button:hover {
+      background: #f4d27a;
+      transform: scale(1.03);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem auto;
+      max-width: 440px;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+    li::before {
+      content: '✔';
+      margin-right: 0.5rem;
+      color: #2a9d8f;
+      font-weight: bold;
+    }
+    .verified {
+      color: #2a9d8f;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+    .testimonial {
+      background: #f8f9fa;
+      margin: 1rem auto;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      max-width: 420px;
+      font-size: 0.95rem;
+    }
+    .testimonial em {
+      display: block;
+      margin: 0.5rem 0;
+      color: #444;
+    }
+    .google-rating {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #444;
+    }
+    .google-rating span {
+      color: #f4a261;
+      font-size: 1.3rem;
+    }
+    footer {
+      font-size: 0.85rem;
+      color: #777;
+      padding: 1.5rem;
+    }
+    .cta-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #264653;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.6rem 1rem;
+      z-index: 999;
+      font-size: 1rem;
+      animation: fadeInUp 0.5s ease;
+    }
+    .cta-bar a {
+      background: #e9c46a;
+      color: #264653;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-left: 0.75rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { 0% { transform: translateY(-100%); } 100% { transform: translateY(0); } }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    @keyframes bounceIn { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  </style>
+</head>
+<body>
+  <div id="timer-banner">Hurry — Offer Ends in <span id="countdown">15:00</span></div>
+  <main>
+    <header class="hero">
+      <h1>15% OFF Service at Blaise Alexander CDJR</h1>
+      <p>Save time and money with Express Lane Service for Oil Changes, Tire Rotations, and Fluid Flushes — no appointment needed!</p>
+    </header>
+    <section>
+      <h2>Claim Your Discount Code</h2>
+      <p>Enter your name and email below. We'll send your 15% OFF code instantly.</p>
+      <form id="discountForm" onsubmit="sendEmail(event)">
+        <input name="name" type="text" placeholder="Your Name" aria-label="Name" required />
+        <input name="email" type="email" placeholder="Email Address" autocomplete="email" aria-label="Email" required />
+        <input type="hidden" name="code" id="codeField" />
+        <button class="cta-button" type="submit">Send My Discount</button>
+      </form>
+      <p id="formMessage"></p>
+    </section>
+    <section>
+      <h2>Why Drivers Love Us</h2>
+      <ul>
+        <li>Express Lane — No appointments necessary</li>
+        <li>Fast, professional service you can trust</li>
+        <li>Oil changes, tire rotations, and fluid flushes</li>
+        <li>Located conveniently in Lewisburg, PA</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Customer Reviews</h2>
+      <div class="testimonial">
+        <strong>Jennifer R.</strong>
+        <em>"Fast, affordable, and super convenient. I was in and out in no time!"</em>
+        <div class="verified">✔ Verified Customer</div>
+      </div>
+      <div class="testimonial">
+        <strong>Mike T.</strong>
+        <em>"Smooth service with no appointment. The 15% off made it even better!"</em>
+        <div class="verified">✔ Verified Customer</div>
+      </div>
+      <div class="google-rating">Rated <span>★★★★★</span> on Google Reviews</div>
+    </section>
+    <section>
+      <h2>Visit Blaise Alexander CDJR</h2>
+      <p><strong>6801 Westbranch Hwy, Lewisburg, PA 17837</strong><br>
+        <strong>Hours:</strong> Monday–Friday: 8 AM–5 PM<br>
+        <a href="https://www.google.com/maps?q=6801+Westbranch+Hwy,+Lewisburg,+PA+17837" target="_blank">Get Directions</a>
+      </p>
+    </section>
+    <footer>
+      © 2025 Blaise Alexander CDJR. All rights reserved.
+    </footer>
+  </main>
+  <div class="cta-bar">
+    <span>Still want 15% OFF?</span>
+    <a href="#discountForm">Claim Now</a>
+  </div>
+  <div class="popup-overlay" id="exitPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 2000;">
+    <div class="popup" style="background: white; padding: 2rem; border-radius: 12px; max-width: 360px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+      <h3>Wait — Don’t Miss This Deal!</h3>
+      <p>Your 15% OFF code is just a click away. Get it before you leave!</p>
+      <button onclick="document.getElementById('exitPopup').style.display='none'" style="background: #1d3557; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer;">Send Me the Code</button>
+    </div>
+  </div>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    emailjs.init("v5kAwBSYKM00Apd4c");
+
+    function generateCode() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      return Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    }
+
+    function sendEmail(e) {
+      e.preventDefault();
+      const form = e.target;
+      const code = generateCode();
+      document.getElementById("codeField").value = code;
+
+      emailjs.sendForm("service_n8wdnrd", "template_dyebh48", form)
+        .then(() => {
+          const msg = document.getElementById("formMessage");
+          msg.innerHTML = `✔ Your discount code <strong>${code}</strong> has been sent to your email.`;
+          msg.style.color = "#2a9d8f";
+          msg.style.display = "block";
+          form.reset();
+          setTimeout(() => { msg.style.display = "none"; }, 5000);
+        })
+        .catch(() => {
+          const msg = document.getElementById("formMessage");
+          msg.textContent = "⚠ Something went wrong. Please try again.";
+          msg.style.color = "#d62828";
+          msg.style.display = "block";
+          setTimeout(() => { msg.style.display = "none"; }, 5000);
+        });
+    }
+
+    let countdown = 15 * 60, el = document.getElementById("countdown");
+    (function tick() {
+      const m = Math.floor(countdown / 60), s = countdown % 60;
+      el.textContent = `${m}:${s.toString().padStart(2, "0")}`;
+      if (countdown-- > 0) setTimeout(tick, 1000);
+      else document.getElementById("timer-banner").textContent = "Sorry! The offer has ended.";
+    })();
+
+    // Show popup once per session
+    let popupShown = false;
+    document.addEventListener("mouseout", function(e) {
+      if (!popupShown && !e.toElement && !e.relatedTarget && e.clientY < 50) {
+        document.getElementById("exitPopup").style.display = "flex";
+        popupShown = true;
+      }
+    });
+  </script>
+</body>
+</html>
